@@ -8,7 +8,7 @@ from autogpt_server.data.block import Block, BlockCategory, BlockOutput, BlockSc
 logger = logging.getLogger(__name__)
 
 class LlmModel(str, Enum):
-    CUSTOM_OLLAMA_MODEL = "Llama 3"
+    CUSTOM_OLLAMA_MODEL = "Llama 3.1"
 
 class ModelMetadata(NamedTuple):
     provider: str
@@ -44,7 +44,7 @@ class CustomLlmCallBlock(Block):
         try:
             response = requests.post(
                 "https://ollama.chargedcloud.com.br/api/generate",
-                json={"model": "llama3", "prompt": prompt, "stream": False},
+                json={"model": "llama3.1", "prompt": prompt, "stream": False},
                 headers={"Content-Type": "application/json"}
             )
             response.raise_for_status()
